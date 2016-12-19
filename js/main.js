@@ -7,8 +7,10 @@ function PogaDANE() {
 			if(data.isDone()) {
 				clearInterval(check);
 				var local = new Local(data.getLocationData());
-				console.log(local.getCountry() + "," + local.getCity() + ',' + local.getDistrict());
-				console.log(data.getWeatherData());
+				var weather = new Weather(data.getWeatherData());
+				console.log(local.getCountry() + "," + local.getCity() + ',' + local.getDistrict() + ',' + local.getRegion() + '.' + local.getLatitude() + ',' + local.getLongitude());
+				console.log(weather.getDescription() + ',' + weather.getClouds() + ',' + weather.getHumidity() + ','
+				+ weather.getPressure() + ',' + weather.getRain() + ',' + weather.getTemperature() + ',' + weather.getWindDirection() + ',' + weather.getWindSpeed());
 			}
 		}, 300)
 	};

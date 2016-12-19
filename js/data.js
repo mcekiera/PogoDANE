@@ -19,7 +19,7 @@ function Data() {
 	};
 
 	var getLocationData = function () {
-		var path = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&sensor=true";
+		var path = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&sensor=true&language=pl";
 		var callback = function (data) {
 			locationData = data;
 			done += 1;
