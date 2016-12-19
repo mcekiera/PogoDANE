@@ -5,15 +5,36 @@
     <title>Title</title>
 </head>
 <body>
-    <div class="location">
-        <h1 id="js-loc-main" class="location__main">Location main</h1>
-        <h6 id="js-loc-sec" class="location__sec">Location secondary</h6>
-        <h6 id="js-loc-coords" class="location__coords">Location coordinates</h6>
+    <div class="widget">
+        <div class="location">
+            <h1 class="location__first_row">
+                <span id="js-loc-main" class="location__main">Location main</span>
+                <small id="js-loc-sec" class="location__sec">Location secondary</small>
+            </h1>
+            <h6 class="location__second_row">
+                <span id="js-country">PL</span>
+                <span id="js-coords">34,56</span>
+                <span id="js-time">12:00</span>
+                <span id="js-date">2016-12-12</span>
+            </h6>
+        </div>
+        <div class="date">
+
+        </div>
+        <div class="weather">
+
+        </div>
     </div>
+
+    <!-- LIB -->
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+    <!-- LOCAL SCRIPT -->
+    <script src="js/main.js"></script>
     <script src="js/data.js"></script>
     <script src="js/local.js"></script>
     <script src="js/weather.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/run.js"></script>
+
 </body>
 </html>

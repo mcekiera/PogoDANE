@@ -1,4 +1,4 @@
-function Data() {
+PogoDANE.Data = function() {
 	var latitude;
 	var longitude;
 	var weatherData;
@@ -60,7 +60,7 @@ function Data() {
 
 
 	this.updateData();
-}
+};
 
 
 

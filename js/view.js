@@ -1,0 +1,3 @@
+PogoDANE.View = function () {
+	
+}

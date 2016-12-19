@@ -1,4 +1,4 @@
-function Weather(weatherData) {
+PogoDANE.Weather = function(weatherData) {
 
 	this.getDescription = function () {
 		return weatherData.weather[0].description;

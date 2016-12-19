@@ -1,4 +1,4 @@
-function Local(localizationData) {
+PogoDANE.Local = function(localizationData) {
 	var data = localizationData.results[0];
 	
 	this.getCity = function () {
