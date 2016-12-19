@@ -3,13 +3,18 @@ PogoDANE.Data = function() {
 	var longitude;
 	var weatherData;
 	var locationData;
+	var alternative;
+	var localMap;
 	var done = 0;
+	var isRunning = false;
 
 	var getData = function (position) {
+		isRunning = true;
 		latitude = position.coords.latitude;
 		longitude = position.coords.longitude;
 		getLocationData();
 		getWeatherData();
+		getLocalMap();
 	};
 
 	var getResponse = function (path, callback) {
@@ -23,7 +28,30 @@ PogoDANE.Data = function() {
 		var callback = function (data) {
 			locationData = data;
 			done += 1;
+			console.log("local")
 		};
+		getResponse(path, callback)
+	};
+
+	var getAlternativeGeolocation = function () {
+		var path = "http://ipinfo.io/json";
+		console.log("alternative");
+
+		var callback = function (data) {
+			alternative = data;
+			var loc = alternative.loc.split(",");
+			var lat = (+loc[0]).toFixed(6);
+			var lng = (+loc[1]).toFixed(6);
+			var position = {
+				coords: {
+					latitude: lat,
+					longitude: lng
+				}
+			};
+			getData(position);
+			console.log("alternative callback")
+		};
+
 		getResponse(path, callback)
 	};
 
@@ -33,8 +61,35 @@ PogoDANE.Data = function() {
 		var callback = function (data) {
 			weatherData = data;
 			done += 1;
+			console.log("weather")
 		};
 		getResponse(path, callback);
+	};
+
+	var getLocalMap = function () {
+		var path = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&key=AIzaSyCwSI2vWcynkzIch96NzRmLEwh_E2ncsvg";
+		var callback = function (data) {
+			console.log("map");
+			localMap = path;
+			done += 1;
+			console.log(localMap)
+		};
+		$.get(path, function (data) {
+			callback(data);
+		});
+	};
+
+	var alternativeSource = function () {
+		var alternative = function () {
+			clearTimeout(alter);
+			console.log("timeout");
+			if (!isRunning && done === 0) {
+				isRunning = true;
+				getAlternativeGeolocation();
+			}
+		};
+
+		var alter = setTimeout(alternative, 10000);
 	};
 
 	this.getWeatherData = function () {
@@ -45,17 +100,24 @@ PogoDANE.Data = function() {
 		return locationData;
 	};
 
+	this.getLocalMap = function () {
+		return localMap;
+	};
+
 	this.updateData = function () {
+		isRunning = false;
 		done = 0;
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(getData);
+			alternativeSource();
 		} else {
-			throw new Error("No geolocation");
+			console.log("No service");
 		}
 	};
 
 	this.isDone = function () {
-		return done === 2;
+		console.log(done);
+		return done >= 3;
 	};
 
 

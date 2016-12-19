@@ -28,4 +28,7 @@ PogoDANE.Weather = function(weatherData) {
 	this.getClouds = function () {
 		return weatherData.clouds.all;
 	};
+	this.getIconCode = function () {
+		return weatherData.icon;
+	}
 }

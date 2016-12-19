@@ -5,6 +5,7 @@ PogoDANE.View = function () {
 	var coordsLoc = $("#js-loc-coords")
 	var dateStamp = $("#js-date");
 	var timeStamp = $("#js-time");
+	var weatherBlock = $("#js-weather");
 
 	this.setLocalization = function(main, sec, country, lat, lng) {
 		mainLoc.text(main);
@@ -16,4 +17,7 @@ PogoDANE.View = function () {
 		dateStamp.text(date);
 		timeStamp.text(time);
 	};
+	this.setMap = function (url) {
+		weatherBlock.css("backgroundImage","url(" + url + ")");
+	}
 };

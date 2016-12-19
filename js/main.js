@@ -18,6 +18,8 @@ var PogoDANE = function(){
 				}
 				view.setLocalization(local.getCity(), local.getDistrict(), local.getCountry(), local.getLatitude(), local.getLongitude());
 				view.setDataTime(date.toLocaleDateString(), date.toLocaleTimeString());
+				view.setMap(data.getLocalMap());
+				console.log(data.getLocalMap());
 				// console.log(local.getCountry() + "," +  + ',' + local.getDistrict() + ',' + local.getRegion() + '.' + local.getLatitude() + ',' + local.getLongitude());
 				console.log(weather.getDescription() + ',' + weather.getClouds() + ',' + weather.getHumidity() + ','
 					+ weather.getPressure() + ',' + weather.getRain() + ',' + weather.getTemperature() + ',' + weather.getWindDirection() + ',' + weather.getWindSpeed());
