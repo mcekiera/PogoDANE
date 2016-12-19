@@ -1,27 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PogoDANE</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
 <body>
     <div class="widget">
+        <div id="js-cover" class="waiting-screen"><i class="fa fa-refresh"></i> </div>
         <div class="location">
-            <h1 class="location__first_row">
+            <div class="location__first_row">
                 <span id="js-loc-main" class="location__main"></span>
-                <small id="js-loc-sec" class="location__sec"></small>
-            </h1>
-            <h6 class="location__second_row">
+                <span id="js-loc-sec" class="location__sec"></span>
+            </div>
+            <div class="location__second_row">
                 <span id="js-loc-country"></span>
                 <span id="js-loc-coords"></span>
                 <span id="js-time"></span>
                 <span id="js-date"></span>
-            </h6>
+            </div>
         </div>
-        <div id="js-weather" class="weather">
+        <div class="weather">
+            <div id="js-weather" class="weather__map"></div>
+            <p id="js-weather-temp" class="weather--top"></p>
+            <img id="js-weather-icon" src="" class="weather--top">
+            <div class="weather--bottom wind">
+                <p id="js-weather-wind-speed" class="wind--top"></p>
+                <i id="js-weather-wind-dir" class="fa fa-arrow-circle-up wind--bottom"></i>
+            </div>
+            <p id="js-weather-pressure" class="weather--bottom"></p>
+            <p id="js-weather-humidity" class="weather--bottom"></p>
+            <p id="js-weather-clouds" class="weather--bottom"></p>
         </div>
-        <button id="js-btn-update">update</button>
+        <button id="js-btn-update"><i class="fa fa-refresh"></i></button>
     </div>
 
     <!-- LIB -->
