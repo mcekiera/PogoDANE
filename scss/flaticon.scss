@@ -1,0 +1,72 @@
+//modified collection from Flaticon.com, designed by Kirill Kazachek
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("src/Flaticon.eot");
+  src: url("src/Flaticon.eot?#iefix") format("embedded-opentype"),
+  url("src/Flaticon.woff") format("woff"),
+  url("src/Flaticon.ttf") format("truetype"),
+  url("src/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+	font-family: "Flaticon";
+	src: url("src/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+.fi:before{
+  display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.flaticon-03d:before { content: "\f100"; }
+.flaticon-03n:before { content: "\f101"; }
+.flaticon-04d:before { content: "\f102"; }
+.flaticon-04n:before { content: "\f102"; }
+.flaticon-02d:before { content: "\f106"; }
+.flaticon-02n:before { content: "\f107"; }
+.flaticon-50d:before { content: "\f108"; }
+.flaticon-50n:before { content: "\f108"; }
+.flaticon-01n:before { content: "\f112"; }
+.flaticon-10d:before { content: "\f114"; }
+.flaticon-10n:before { content: "\f115"; }
+.flaticon-9d:before { content: "\f117"; }
+.flaticon-9n:before { content: "\f117"; }
+.flaticon-13d:before { content: "\f11c"; }
+.flaticon-13n:before { content: "\f11c"; }
+.flaticon-11d:before { content: "\f11f"; }
+.flaticon-11n:before { content: "\f11f"; }
+.flaticon-01d:before { content: "\f123"; }
+
+$font-Flaticon-03d: "\f100";
+$font-Flaticon-03n: "\f101";
+$font-Flaticon-04d: "\f102";
+$font-Flaticon-04d: "\f102";
+$font-Flaticon-02d: "\f106";
+$font-Flaticon-02n: "\f107";
+$font-Flaticon-50d: "\f108";
+$font-Flaticon-50n: "\f108";
+$font-Flaticon-01n: "\f112";
+$font-Flaticon-10d: "\f114";
+$font-Flaticon-10n: "\f115";
+$font-Flaticon-09d: "\f117";
+$font-Flaticon-09n: "\f117";
+$font-Flaticon-13d: "\f11c";
+$font-Flaticon-13n: "\f11c";
+$font-Flaticon-11d: "\f11f";
+$font-Flaticon-11n: "\f11f";
+$font-Flaticon-01d: "\f123";

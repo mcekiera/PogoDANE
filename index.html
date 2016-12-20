@@ -6,20 +6,30 @@
     <title>PogoDANE</title>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
     <div id="js-weather-background" class="widget">
         <!--<div id="js-cover" class="waiting-screen"><i class="fa fa-refresh"></i> </div>-->
         <div class="local">
-            <p class="local--main"><span id="js-local-city"></span>, <span id="js-local-country"></span></p>
+            <p class="local--main">
+                <span id="js-local-city" class="local__item"></span>
+                <span id="js-local-country" class="local__item"></span>
+            </p>
             <div class="local--sec">
-                <p><span id="js-local-district"></span><span id="js-local-coords"></span></p>
-                <p><span id="js-local-time"></span><span id="js-local-date"></span></p>
+                <div>
+                    <span id="js-local-district" class="local__item"></span>
+                    <span id="js-local-coords" class="local__item"></span>
+                </div>
+                <div>
+                    <span id="js-local-time" class="local__item"></span>
+                    <span id="js-local-date" class="local__item"></span>
+                </div>
             </div>
         </div>
         <div class="weather">
-            <div class="weather--main"><img id="js-weather-icon" src=""><p id="js-weather-temp"></p></div>
+            <div class="weather--main"><i id="js-weather-icon" class="fi"></i><p id="js-weather-temp"></p></div>
             <div class="weather--sec">
                 <p id="js-weather-description"></p>
                 <p><span id="js-label-pressure"></span><span id="js-weather-pressure"></span></p>
@@ -39,8 +49,8 @@
                 <p><span id="js-label-cloudiness"></span><span id="js-weather-cloudiness"></span></p>
             </div>
         </div>
-        <button id="js-btn-lang" class="btn btn--lang">EN</button>
-        <button id="js-btn-update" class="btn btn--update"><i class="fa fa-refresh"></i></button>
+        <div id="js-btn-lang" class="btn btn--lang">en</div>
+        <div id="js-btn-update" class="btn btn--update"><i class="fa fa-refresh"></i></div>
     </div>
 
     <!-- LIB -->

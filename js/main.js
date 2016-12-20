@@ -73,7 +73,7 @@ var PogoDANE = function(){
 			var date = new Date();
 			localView.setTimeStamp(date);
 		};
-		setInterval(update, 5000);
+		setInterval(update, 1000);
 	};
 
 	$("#js-btn-update").click(requestUpdate);

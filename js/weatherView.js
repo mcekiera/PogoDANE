@@ -37,7 +37,7 @@ PogoDANE.WeatherView = function () {
 	var setImg = function (weatherCode) {
 		var iconPath = "http://openweathermap.org/img/w/" + weatherCode + ".png";
 		$back.css("backgroundImage", "url(" + backgroundURL[weatherCode] + ")");
-		$icon.css("visibility","visible").attr("src",iconPath)
+		$icon.css("visibility","visible").removeAttr("class").addClass("fi flaticon-" + weatherCode)
 	};
 
 	var setRain = function (rainType) {
