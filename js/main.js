@@ -1,13 +1,13 @@
 var PogoDANE = function(){
 	var data = new PogoDANE.Data();
-	var view = new PogoDANE.View();
+	var localView = new PogoDANE.LocalView();
 	var lastUpdate;
 	var local;
 	var weather;
 	var moon;
 
 	var updateData = function () {
-		view.cover();
+		// view.cover();
 		var date = new Date();
 		if(isReasonableUpdate(date,lastUpdate)) {
 			data.updateData();
@@ -20,17 +20,17 @@ var PogoDANE = function(){
 					moon = data.getMoonPhase();
 					lastUpdate = date;
 
-					view.setLocalization(local.getCity(), local.getDistrict(), local.getCountry(), local.getLatitude(), local.getLongitude());
-					view.setDataTime(date.toLocaleDateString(), date.toLocaleTimeString());
-					view.setMap(data.getLocalMap());
-					view.setIcon(weather.getIconCode());
-					view.setWeather(weather.getTemperature(),weather.getPressure(),weather.getWindSpeed(), weather.getWindDirection(),
-						weather.getHumidity(), weather.getClouds());
-					view.uncover();
+					localView.setLocalization(local.getCountry(), local.getCity(), local.getDistrict(), local.getLatitude(), local.getLongitude());
+					localView.setTimeStamp(date.toLocaleDateString(), date.toLocaleTimeString());
+					// view.setMap(data.getLocalMap());
+					// view.setIcon(weather.getIconCode());
+					// view.setWeather(weather.getTemperature(),weather.getPressure(),weather.getWindSpeed(), weather.getWindDirection(),
+					// 	weather.getHumidity(), weather.getClouds());
+					// view.uncover();
 				}
 			}, 300)
 		} else {
-			view.uncover();
+			// view.uncover();
 		}
 	};
 

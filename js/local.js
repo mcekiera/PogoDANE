@@ -6,7 +6,7 @@ PogoDANE.Local = function(localizationData) {
 		return data.address_components[base - 4].long_name
 	};
 	this.getCountry = function () {
-		return data.address_components[base - 1].long_name
+		return data.address_components[base - 1].short_name
 	};
 	this.getRegion = function () {
 		return data.address_components[base - 2].long_name

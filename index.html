@@ -10,30 +10,13 @@
 </head>
 <body>
     <div class="widget">
-        <div id="js-cover" class="waiting-screen"><i class="fa fa-refresh"></i> </div>
-        <div class="location">
-            <div class="location__first_row">
-                <span id="js-loc-main" class="location__main"></span>
-                <span id="js-loc-sec" class="location__sec"></span>
-            </div>
-            <div class="location__second_row">
-                <span id="js-loc-country"></span>
-                <span id="js-loc-coords"></span>
-                <span id="js-time"></span>
-                <span id="js-date"></span>
-            </div>
+        <!--<div id="js-cover" class="waiting-screen"><i class="fa fa-refresh"></i> </div>-->
+        <div class="local">
+            <p class="local--main"><span id="js-local-city"></span>, <span id="js-local-country"></span></p>
+            <p class="local--sec"><span id="js-local-district"></span><span id="js-local-coords"></span></p>
+            <p class="local--sec"><span id="js-local-time"></span><span id="js-local-date"></span></p>
         </div>
         <div class="weather">
-            <div id="js-weather" class="weather__map"></div>
-            <p id="js-weather-temp" class="weather--top"></p>
-            <img id="js-weather-icon" src="" class="weather--top">
-            <div class="weather--bottom wind">
-                <p id="js-weather-wind-speed" class="wind--top"></p>
-                <i id="js-weather-wind-dir" class="fa fa-arrow-circle-up wind--bottom wind__arrow" data-dir="90deg"></i>
-            </div>
-            <p id="js-weather-pressure" class="weather--bottom"></p>
-            <p id="js-weather-humidity" class="weather--bottom"></p>
-            <p id="js-weather-clouds" class="weather--bottom"></p>
         </div>
         <button id="js-btn-update"><i class="fa fa-refresh"></i></button>
     </div>
@@ -46,7 +29,7 @@
     <script src="js/data.js"></script>
     <script src="js/local.js"></script>
     <script src="js/weather.js"></script>
-    <script src="js/view.js"></script>
+    <script src="js/localView.js"></script>
     <script src="js/run.js"></script>
 
 </body>
