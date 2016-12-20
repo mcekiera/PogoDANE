@@ -69,7 +69,7 @@ PogoDANE.Data = function() {
 	};
 
 	var collectLocalMap = function () {
-		var path = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&key=AIzaSyCwSI2vWcynkzIch96NzRmLEwh_E2ncsvg";
+		var path = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=11&size=300x300&key=AIzaSyCwSI2vWcynkzIch96NzRmLEwh_E2ncsvg";
 		var callback = function (data) {
 			console.log("map");
 			localMap = path;

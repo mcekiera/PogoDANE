@@ -24,7 +24,8 @@ var PogoDANE = function(){
 					view.setDataTime(date.toLocaleDateString(), date.toLocaleTimeString());
 					view.setMap(data.getLocalMap());
 					view.setIcon(weather.getIconCode());
-					view.setWeather(weather.getTemperature(),weather.getPressure(),weather.getWindSpeed(),weather.getHumidity(), weather.getClouds());
+					view.setWeather(weather.getTemperature(),weather.getPressure(),weather.getWindSpeed(), weather.getWindDirection(),
+						weather.getHumidity(), weather.getClouds());
 					view.uncover();
 				}
 			}, 300)
