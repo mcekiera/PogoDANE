@@ -18,6 +18,17 @@ PogoDANE.Weather = function(weatherData) {
 	this.getWindDirection = function () {
 		return weatherData.wind.deg;
 	};
+	this.getRainKind = function () {
+		if(weatherData.rain && weatherData.snow) {
+			return "both";
+		} else if(weatherData.rain) {
+			return "rain";
+		} else if(weatherData.snow) {
+			return "snow";
+		} else {
+			return "none";
+		}
+	};
 	this.getRain = function () {
 		try {
 			return weatherData.rain["3h"];
@@ -32,7 +43,7 @@ PogoDANE.Weather = function(weatherData) {
 			return 0.0;
 		}
 	}
-	this.getClouds = function () {
+	this.getCloudiness = function () {
 		return weatherData.clouds.all;
 	};
 	this.getIconCode = function () {

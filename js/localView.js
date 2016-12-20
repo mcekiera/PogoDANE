@@ -7,13 +7,13 @@ PogoDANE.LocalView = function () {
 	var $date = $("#js-local-date");
 
 	this.setLocalization = function (data) {
-		$city.text(data.city);
-		$country.text(data.country);
-		$district.text(data.district);
-		$coords.text("[" + (Math.round(data.latitude * 100) / 100) + "," + (Math.round(data.longitude * 100) / 100) + "]");
+		$city.text(data.getCity());
+		$country.text(data.getCountry());
+		$district.text(data.getDistrict());
+		$coords.text("[" + (Math.round(data.getLatitude() * 100) / 100) + "," + (Math.round(data.getLongitude() * 100) / 100) + "]");
 	};
-	this.setTimeStamp = function (date, time) {
-		$time.text(time.substring(0,5));
-		$date.text(date);
-	}
+	this.setTimeStamp = function (date) {
+		$time.text(date.toLocaleDateString().substring(0,5));
+		$date.text(date.toLocaleTimeString());
+	};
 };
