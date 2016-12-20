@@ -18,8 +18,6 @@ var PogoDANE = function(){
 					var moon = data.getMoonPhase();
 					clearInterval(check);
 
-
-
 					lastUpdate = date;
 					uiView.setUI(language);
 					localView.setLocalization(local);
