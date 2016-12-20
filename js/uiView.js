@@ -8,24 +8,24 @@ PogoDANE.UiView = function () {
 
 	var dict = {
 		rain: {
-			EN: "rain",
-			PL: "opady"
+			en: "rain",
+			pl: "opady"
 		},
 		pressure: {
-			EN: "pressure",
-			PL: "ciśnienie"
+			en: "pressure",
+			pl: "ciśnienie"
 		},
 		humidity: {
-			EN: "humidity",
-			PL: "wilgotność"
+			en: "humidity",
+			pl: "wilgotność"
 		},
 		wind: {
-			EN: "wind",
-			PL: "wiatr"
+			en: "wind",
+			pl: "wiatr"
 		},
 		cloudiness: {
-			EN: "cloudiness",
-			PL: "zachmurzenie"
+			en: "cloudiness",
+			pl: "zachmurzenie"
 		}
 	};
 

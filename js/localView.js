@@ -13,7 +13,7 @@ PogoDANE.LocalView = function () {
 		$coords.text("[" + (Math.round(data.getLatitude() * 100) / 100) + "," + (Math.round(data.getLongitude() * 100) / 100) + "]");
 	};
 	this.setTimeStamp = function (date) {
-		$time.text(date.toLocaleDateString().substring(0,5));
-		$date.text(date.toLocaleTimeString());
+		$time.text(date.toLocaleTimeString().substring(0,5));
+		$date.text(date.toLocaleDateString());
 	};
 };

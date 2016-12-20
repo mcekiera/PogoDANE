@@ -8,14 +8,19 @@ PogoDANE.Data = function() {
 	var localMap;
 	var done = 0;
 	var isRunning = false;
+	var lang = "pl";
 
-	var getData = function (position) {
+	var init = function (position) {
 		isRunning = true;
 		latitude = position.coords.latitude;
 		longitude = position.coords.longitude;
+		getData();
+	};
+
+	var getData = function() {
+		done = 0;
 		collectLocationData();
 		collectWeatherData();
-		collectLocalMap();
 		collectDateTimeData();
 	};
 
@@ -26,7 +31,7 @@ PogoDANE.Data = function() {
 	};
 
 	var collectLocationData = function () {
-		var path = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&sensor=true&language=pl";
+		var path = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&sensor=true&language=" + lang;
 		var callback = function (data) {
 			locationData = data;
 			done += 1;
@@ -50,7 +55,7 @@ PogoDANE.Data = function() {
 					longitude: lng
 				}
 			};
-			getData(position);
+			init(position);
 			console.log("alternative callback")
 		};
 
@@ -59,26 +64,13 @@ PogoDANE.Data = function() {
 
 	var collectWeatherData = function () {
 		var path =  "http://api.openweathermap.org/data/2.5/weather?lat=" + Math.round(latitude * 100) / 100 + "&lon=" +
-				Math.round(longitude * 100) / 100 + "&APPID=cf877ce314aa5244a62d3f93fc27ab15&lang=pl";
+				Math.round(longitude * 100) / 100 + "&APPID=cf877ce314aa5244a62d3f93fc27ab15&lang=" + lang;
 		var callback = function (data) {
 			weatherData = data;
 			done += 1;
 			console.log("weather")
 		};
 		getResponse(path, callback);
-	};
-
-	var collectLocalMap = function () {
-		var path = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=11&size=300x300&key=AIzaSyCwSI2vWcynkzIch96NzRmLEwh_E2ncsvg";
-		var callback = function (data) {
-			console.log("map");
-			localMap = path;
-			done += 1;
-			console.log(localMap)
-		};
-		$.get(path, function (data) {
-			callback(data);
-		});
 	};
 
 	var collectDateTimeData = function () {
@@ -114,36 +106,32 @@ PogoDANE.Data = function() {
 		return locationData;
 	};
 
-	this.getLocalMap = function () {
-		return localMap;
-	};
-
-	this.getTimeStamp = function () {
-		return timeStamp;
-	};
-
 	this.getMoonPhase = function () {
 		return determineMoonPhase();
 	};
 
-	this.updateData = function () {
+	this.updateAll = function (language) {
+		lang = language;
 		isRunning = false;
-		done = 0;
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(getData);
+			navigator.geolocation.getCurrentPosition(init);
 			useAlternativeSource();
 		} else {
 			console.log("No service");
 		}
 	};
 
+	this.updateData = function () {
+		getData();
+	};
+
 	this.isDone = function () {
 		console.log(done);
-		return done >= 3;
+		return done >= 2;
 	};
 
 
-	this.updateData();
+	this.updateAll();
 };
 
 

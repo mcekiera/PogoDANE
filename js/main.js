@@ -1,30 +1,44 @@
 var PogoDANE = function(){
+	var language = "pl";
 	var data = new PogoDANE.Data();
 	var localView = new PogoDANE.LocalView();
 	var weatherView = new PogoDANE.WeatherView();
 	var uiView = new PogoDANE.UiView();
 	var lastUpdate;
-	var language = "PL";
 
-	var updateData = function () {
-		// view.cover();
+	var interval = function() {
+		var check = setInterval(function () {
+			if (data.isDone()) {
+				var date = new Date();
+				var local = new PogoDANE.Local(data.getLocationData());
+				var weather = new PogoDANE.Weather(data.getWeatherData());
+				var moon = data.getMoonPhase();
+				clearInterval(check);
+
+				lastUpdate = date;
+				uiView.setUI(language);
+				localView.setLocalization(local);
+				localView.setTimeStamp(date);
+				weatherView.setWeather(weather, language);
+			}
+		}, 300);
+	};
+
+	var updateAll = function () {
+		data.updateAll(language);
+		interval();
+
+	};
+
+	var updateDataOnly = function () {
+		data.updateData();
+		interval();
+	};
+
+	var requestUpdate = function () {
 		var date = new Date();
 		if(isReasonableUpdate(date,lastUpdate)) {
-			data.updateData();
-			var check = setInterval(function () {
-				if (data.isDone()) {
-					var local = new PogoDANE.Local(data.getLocationData());
-					var weather = new PogoDANE.Weather(data.getWeatherData());
-					var moon = data.getMoonPhase();
-					clearInterval(check);
-
-					lastUpdate = date;
-					uiView.setUI(language);
-					localView.setLocalization(local);
-					localView.setTimeStamp(date);
-					weatherView.setWeather(weather);
-				}
-			}, 300)
+			updateAll();
 		} else {
 			// view.uncover();
 		}
@@ -54,8 +68,25 @@ var PogoDANE = function(){
 		return false;
 	};
 
-	$("#js-btn-update").click(updateData);
+	var clock = function () {
+		var update = function () {
+			var date = new Date();
+			localView.setTimeStamp(date);
+		};
+		setInterval(update, 5000);
+	};
 
-	updateData();
+	$("#js-btn-update").click(requestUpdate);
+
+	$("#js-btn-lang").click(function () {
+		var lang = (language === "pl") ? "en" : "pl";
+		$(this).text(language);
+		language = lang;
+		updateDataOnly();
+		uiView.setUI(lang);
+	});
+
+	updateAll();
+	clock();
 };
 

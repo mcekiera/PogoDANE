@@ -3,6 +3,9 @@ PogoDANE.Weather = function(weatherData) {
 	this.getDescription = function () {
 		return weatherData.weather[0].description;
 	};
+	this.getDescriptionEN = function() {
+		return weatherData.weather[0].main;
+	}
 	this.getTemperature = function () {
 		return weatherData.main.temp;
 	};

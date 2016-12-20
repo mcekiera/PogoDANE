@@ -11,6 +11,7 @@ PogoDANE.WeatherView = function () {
 	var $cloud = $("#js-weather-cloudiness");
 	var $desc = $("#js-weather-description");
 	var $back = $("#js-weather-background");
+	var currentData;
 
 	var backgroundURL = {
 		"01d": "https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
@@ -29,8 +30,8 @@ PogoDANE.WeatherView = function () {
 		"11n":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
 		"13d":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
 		"13n":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"50d":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"50n": "https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg"
+		"50d":"https://static.pexels.com/photos/249074/pexels-photo-249074.jpeg",
+		"50n":"https://static.pexels.com/photos/1068/lights-night-dark-industry.jpg"
 	};
 
 	var setImg = function (weatherCode) {
@@ -59,9 +60,9 @@ PogoDANE.WeatherView = function () {
 		}
 	};
 
-	this.setWeather = function (data) {
+	this.setWeather = function (data, lang) {
 		$temp.text(Math.round(data.getTemperature() - 273.15) + "\u00B0" + "C");
-		$desc.text(data.getDescription());
+		$desc.text((lang === "pl") ? data.getDescription() : data.getDescriptionEN());
 		$cloud.text(data.getCloudiness()+"%");
 		$humid.text(data.getHumidity()+"%");
 		$pressure.text(data.getPressure()+"hpa");
@@ -70,5 +71,6 @@ PogoDANE.WeatherView = function () {
 		$rainMM.text(data.getRain() + "mm");
 		setRain(data.getRainType());
 		setImg(data.getIconCode());
+		currentData = data;
 	};
 };
