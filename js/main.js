@@ -1,9 +1,8 @@
 var PogoDANE = function(){
 	var data = new PogoDANE.Data();
 	var localView = new PogoDANE.LocalView();
+	var weatherView = new PogoDANE.WeatherView();
 	var lastUpdate;
-	var local;
-	var weather;
 	var moon;
 
 	var updateData = function () {
@@ -13,14 +12,23 @@ var PogoDANE = function(){
 			data.updateData();
 			var check = setInterval(function () {
 				if (data.isDone()) {
+					var local = new PogoDANE.Local(data.getLocationData());
+					var weather = new PogoDANE.Weather(data.getWeatherData());
 					clearInterval(check);
 
-					local = new PogoDANE.Local(data.getLocationData());
-					weather = new PogoDANE.Weather(data.getWeatherData());
+
 					moon = data.getMoonPhase();
 					lastUpdate = date;
 
-					localView.setLocalization(local.getCountry(), local.getCity(), local.getDistrict(), local.getLatitude(), local.getLongitude());
+					var localData = {
+						country: local.getCountry(),
+						city: local.getCity(),
+						district: local.getDistrict(),
+						latitude: local.getLatitude(),
+						longitude: local.getLongitude()
+					};
+					localView.setLocalization(localData);
+
 					localView.setTimeStamp(date.toLocaleDateString(), date.toLocaleTimeString());
 					// view.setMap(data.getLocalMap());
 					// view.setIcon(weather.getIconCode());

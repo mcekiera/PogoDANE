@@ -25,6 +25,13 @@ PogoDANE.Weather = function(weatherData) {
 			return 0.0;
 		}
 	};
+	this.getSnow = function () {
+		try {
+			return weatherData.snow["3h"];
+		} catch (err) {
+			return 0.0;
+		}
+	}
 	this.getClouds = function () {
 		return weatherData.clouds.all;
 	};

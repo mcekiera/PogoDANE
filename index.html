@@ -6,17 +6,28 @@
     <title>PogoDANE</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
     <div class="widget">
         <!--<div id="js-cover" class="waiting-screen"><i class="fa fa-refresh"></i> </div>-->
         <div class="local">
             <p class="local--main"><span id="js-local-city"></span>, <span id="js-local-country"></span></p>
-            <p class="local--sec"><span id="js-local-district"></span><span id="js-local-coords"></span></p>
-            <p class="local--sec"><span id="js-local-time"></span><span id="js-local-date"></span></p>
+            <div class="local--sec">
+                <p><span id="js-local-district"></span><span id="js-local-coords"></span></p>
+                <p><span id="js-local-time"></span><span id="js-local-date"></span></div></p>
+            </div>
         </div>
         <div class="weather">
+            <div class="weather--main"><img id="js-weather-icon" src=""><p id="js-weather-temp"></p></div>
+            <div class="weather--sec">
+                <p id="js-weather-description"></p>
+                <p><span id="js-label-pressure"></span><span id="js-weather-pressure"></span></p>
+                <p><span id="js-label-wind"></span>:<span id="js-weather-wind-speed"></span><span id="js-weather-wind-dir"></span></p>
+                <p><span id="js-label-humidity"></span><span id="js-weather-humidity"></span></p>
+                <p><span id="js-label-rain"></span><span id="js-weather-rain"></span><span id="js-weather-rain-kind"></span></p>
+                <p><span id="js-label-cloudiness"></span><span id="js-weather-cloudiness"></span></p>
+            </div>
         </div>
         <button id="js-btn-update"><i class="fa fa-refresh"></i></button>
     </div>
@@ -30,6 +41,7 @@
     <script src="js/local.js"></script>
     <script src="js/weather.js"></script>
     <script src="js/localView.js"></script>
+    <script src="js/weatherView.js"></script>
     <script src="js/run.js"></script>
 
 </body>
