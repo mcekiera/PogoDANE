@@ -5,7 +5,6 @@ PogoDANE.Data = function() {
 	var locationData;
 	var timeStamp;
 	var alternative;
-	var localMap;
 	var done = 0;
 	var isRunning = false;
 	var lang = "pl";
@@ -77,14 +76,6 @@ PogoDANE.Data = function() {
 		timeStamp = new Date();
 	};
 
-	var determineMoonPhase = function () {
-			var lp = 2551443;
-			var now = timeStamp;
-			var new_moon = new Date(1970, 0, 7, 20, 35, 0);
-			var phase = ((now.getTime() - new_moon.getTime())/1000) % lp;
-			return Math.floor(phase /(24*3600)) + 1;
-	};
-
 	var useAlternativeSource = function () {
 		var alternative = function () {
 			clearTimeout(alter);
@@ -104,10 +95,6 @@ PogoDANE.Data = function() {
 
 	this.getLocationData = function () {
 		return locationData;
-	};
-
-	this.getMoonPhase = function () {
-		return determineMoonPhase();
 	};
 
 	this.updateAll = function (language) {

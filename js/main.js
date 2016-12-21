@@ -12,7 +12,6 @@ var PogoDANE = function(){
 				var date = new Date();
 				var local = new PogoDANE.Local(data.getLocationData());
 				var weather = new PogoDANE.Weather(data.getWeatherData());
-				var moon = data.getMoonPhase();
 				clearInterval(check);
 
 				uiView.uncover();
@@ -28,6 +27,8 @@ var PogoDANE = function(){
 	var updateAll = function () {
 		data.updateAll(language);
 		interval();
+		clearInterval(every10min);
+		var every10min = setTimeout(updateDataOnly, 600000);
 	};
 
 	var updateDataOnly = function () {
@@ -40,7 +41,7 @@ var PogoDANE = function(){
 		if(isReasonableUpdate(date,lastUpdate)) {
 			updateAll();
 		} else {
-			// view.uncover();
+			updateDataOnly()
 		}
 	};
 
@@ -94,7 +95,11 @@ var PogoDANE = function(){
 		$(".info").fadeOut();
 	});
 
+	$("#js-btn-unit").click(function () {
+		$(this).children().text($(this).children().text() === "F" ? "C" : "F");
+		weatherView.changeUnit();
+	});
+
 	updateAll();
-	clock();
 };
 

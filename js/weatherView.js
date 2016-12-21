@@ -12,6 +12,7 @@ PogoDANE.WeatherView = function () {
 	var $desc = $("#js-weather-description");
 	var $back = $(".weather-background");
 	var currentData;
+	var unit = "C";
 
 	var backgroundURL = function (weatherCode) {
 		return "img/" + weatherCode + ".jpg"
@@ -19,6 +20,7 @@ PogoDANE.WeatherView = function () {
 
 	var setImg = function (weatherCode) {
 		$back.css("backgroundImage", "url(" + backgroundURL(weatherCode) + ")");
+		console.log(weatherCode);
 		$icon.css("visibility","visible").removeAttr("class").addClass("fi flaticon-" + weatherCode)
 	};
 
@@ -42,8 +44,21 @@ PogoDANE.WeatherView = function () {
 		}
 	};
 
+	var getTemp = function () {
+		switch (unit) {
+			case "F":
+				return Math.round(currentData.getTemperature() * (9/5) - 459.65) + "\u00B0" + unit
+				break;
+			case "C":
+				return Math.round(currentData.getTemperature() - 273.15) + "\u00B0" + unit;
+				break
+		}
+
+	};
+
 	this.setWeather = function (data, lang) {
-		$temp.text(Math.round(data.getTemperature() - 273.15) + "\u00B0" + "C");
+		currentData = data;
+		$temp.text(getTemp());
 		$desc.text((lang === "pl") ? data.getDescription() : data.getDescriptionEN());
 		$cloud.text(data.getCloudiness()+"%");
 		$humid.text(data.getHumidity()+"%");
@@ -53,6 +68,10 @@ PogoDANE.WeatherView = function () {
 		$rainMM.text(data.getRain() + "mm");
 		setRain(data.getRainType());
 		setImg(data.getIconCode());
-		currentData = data;
 	};
+	
+	this.changeUnit = function () {
+		unit = unit === "C" ? "F" : "C";
+		$temp.text(getTemp());
+	}
 };

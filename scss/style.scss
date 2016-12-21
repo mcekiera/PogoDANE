@@ -120,8 +120,14 @@ body {
   }
 }
 
-.btn {
+.buttons {
+  display: flex;
+  flex-direction: row;
   position: absolute;
+  bottom: 0;
+}
+
+.btn {
   width: 100px;
   height: 100px;
   background-color: transparent;
@@ -139,18 +145,6 @@ body {
 
   &:active {
     color: #333;
-  }
-
-  &--lang {
-    left: 0;
-  }
-
-  &--info {
-    left: 50%;
-  }
-
-  &--update {
-    right: 0;
   }
 }
 

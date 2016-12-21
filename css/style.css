@@ -104,8 +104,13 @@ body {
     font-size: 20px;
     margin: 5px 0; }
 
-.btn {
+.buttons {
+  display: flex;
+  flex-direction: row;
   position: absolute;
+  bottom: 0; }
+
+.btn {
   width: 100px;
   height: 100px;
   background-color: transparent;
@@ -120,12 +125,6 @@ body {
     color: #bbb; }
   .btn:active {
     color: #333; }
-  .btn--lang {
-    left: 0; }
-  .btn--info {
-    left: 50%; }
-  .btn--update {
-    right: 0; }
 
 .ico {
   display: none; }
