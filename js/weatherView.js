@@ -13,30 +13,12 @@ PogoDANE.WeatherView = function () {
 	var $back = $(".weather-background");
 	var currentData;
 
-	var backgroundURL = {
-		"01d": "https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"01n": "https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"02d":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"02n":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"03d":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"03n":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"04d":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"04n":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"09d":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"09n":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"10d":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"10n":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"11d":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"11n":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"13d":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"13n":"https://static.pexels.com/photos/205335/pexels-photo-205335.jpeg",
-		"50d":"https://static.pexels.com/photos/249074/pexels-photo-249074.jpeg",
-		"50n":"https://static.pexels.com/photos/1068/lights-night-dark-industry.jpg"
+	var backgroundURL = function (weatherCode) {
+		return "img/" + weatherCode + ".jpg"
 	};
 
 	var setImg = function (weatherCode) {
-		var iconPath = "http://openweathermap.org/img/w/" + weatherCode + ".png";
-		$back.css("backgroundImage", "url(" + backgroundURL[weatherCode] + ")");
+		$back.css("backgroundImage", "url(" + backgroundURL(weatherCode) + ")");
 		$icon.css("visibility","visible").removeAttr("class").addClass("fi flaticon-" + weatherCode)
 	};
 
