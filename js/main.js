@@ -15,6 +15,7 @@ var PogoDANE = function(){
 				var moon = data.getMoonPhase();
 				clearInterval(check);
 
+				uiView.uncover();
 				lastUpdate = date;
 				uiView.setUI(language);
 				localView.setLocalization(local);
@@ -27,7 +28,6 @@ var PogoDANE = function(){
 	var updateAll = function () {
 		data.updateAll(language);
 		interval();
-
 	};
 
 	var updateDataOnly = function () {
@@ -84,6 +84,14 @@ var PogoDANE = function(){
 		language = lang;
 		updateDataOnly();
 		uiView.setUI(lang);
+	});
+
+	$("#js-btn-info").click(function () {
+		$(".info").fadeIn();
+	});
+
+	$("#js-btn-cancel").click(function () {
+		$(".info").fadeOut();
 	});
 
 	updateAll();

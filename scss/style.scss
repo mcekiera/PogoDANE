@@ -4,42 +4,113 @@
   border-radius: $rad;
 }
 
+@mixin position-absolute() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width:  100%;
+  height: 100%;
+  min-height: 650px;
+}
+
+@mixin animation($str) {
+  -webkit-animation: $str;
+  -o-animation: $str;
+  animation: $str;
+}
+
+body {
+  @include position-absolute;
+}
+
 .widget {
   @include border-radius(20px);
   position: relative;
-  width: 500px;
-  height: 700px;
+  height: 650px;
+  max-height: 650px;
+  width: 400px;
   background-size: cover;
-  background: no-repeat center;
+  background-position: center;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   text-align: center;
   font-family: "Lato", sans-serif;
   text-shadow: 1px 1px 2px #000;
-  box-shadow: 1px 1px 2px #000;;
+  box-shadow: 1px 1px 2px #000;
+}
+
+.big-screen {
+  @include position-absolute;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.big-screen:after {
+  @include position-absolute;
+  content: "";
+  background-color: rgba(255,255,255,.5);
+}
+
+.waiting-screen {
+  @include position-absolute;
+  text-align: center;
+  z-index: 999;
+  padding-top: 25%;
+  background-color: rgba(255,255,255,.8);
+  text-shadow: 1px 1px 2px #000;
+
+  i.fa {
+    @include animation(spin 1s linear infinite);
+    font-size: 98px;
+    color: #fff;
+
+  }
+}
+
+.weather-background {
+  background-image: url("../img/default.jpg");
 }
 
 .weather {
   display: flex;
   flex-direction: column;
+  color: #fff;
+
+  &__item {
+    margin-right: 10px;
+  }
 
   &--main {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    font-size: 98px;
+  }
+
+  &--sec {
+    text-transform: capitalize;
+    font-size: 24px;
+  }
+
+  &__row {
+    margin: 3px;
   }
 }
 
 .local {
-  text-align: center;
   color: #fff;
+  margin-bottom: 20px;
 
   &__item {
     margin: 0 5px;
   }
 
   &--main {
-    font-size: 78px;
+    font-size: 60px;
     margin: 20px 0 10px 0;
   }
 
@@ -47,7 +118,6 @@
     font-size: 20px;
     margin: 5px 0;
   }
-
 }
 
 .btn {
@@ -60,6 +130,8 @@
   line-height: 100px;
   font-size: 56px;
   cursor: pointer;
+  bottom: 0;
+  text-align: center;
 
   &:hover {
     color: #bbb;
@@ -71,14 +143,14 @@
 
   &--lang {
     left: 0;
-    bottom: 0;
-    text-align: center;
+  }
+
+  &--info {
+    left: 50%;
   }
 
   &--update {
     right: 0;
-    bottom: 0;
-    text-align: center;
   }
 }
 
@@ -86,13 +158,43 @@
   display: none;
 }
 
-@keyframes spin {
+.info {
+  @include border-radius(20px);
+  @include position-absolute;
+  background-color: rgba(255,255,255,.8);
+  text-align: justify;
+  z-index: 999;
+  display: none;
+  font-size: 18px;
 
+  p {
+    padding: 75px 10px;
+  }
+
+  i.fa {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+}
+
+@keyframes spin {
   80% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
   100% {
     transform: rotate(360deg);
 
+  }
+}
+
+@media screen and (max-width: 768px){
+  .big-screen {
+    display: none;
+  }
+
+  .widget {
+    @include border-radius(0);
+    @include position-absolute;
   }
 }

@@ -10,7 +10,7 @@ PogoDANE.WeatherView = function () {
 	var $humid = $("#js-weather-humidity");
 	var $cloud = $("#js-weather-cloudiness");
 	var $desc = $("#js-weather-description");
-	var $back = $("#js-weather-background");
+	var $back = $(".weather-background");
 	var currentData;
 
 	var backgroundURL = {

@@ -4,6 +4,7 @@ PogoDANE.UiView = function () {
 	var $rain = $("#js-label-rain");
 	var $cloudiness = $("#js-label-cloudiness");
 	var $wind = $("#js-label-wind");
+	var $cover = $("#js-cover");
 	var end =  ":";
 
 	var dict = {
@@ -36,4 +37,8 @@ PogoDANE.UiView = function () {
 		$cloudiness.text((dict["cloudiness"][lang]) + end);
 		$humidity.text(dict["humidity"][lang] + end);
 	};
+
+	this.uncover = function () {
+		$cover.fadeOut();
+	}
 };

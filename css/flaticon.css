@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Flaticon";
   src: url("src/Flaticon.eot");
-  src: url("src/Flaticon.eot?#iefix") format("embedded-opentype"), url("src/Flaticon.woff") format("woff"), url("src/Flaticon.ttf") format("truetype"), url("src/Flaticon.svg#Flaticon") format("svg");
+  src: url("src/Flaticon.eot?#iefix") format("embedded-opentype"), url("src/Flaticon.woff") format("woff"), url("src/Flaticon.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {

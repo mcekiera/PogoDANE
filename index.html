@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PogoDANE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="css/flaticon.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-    <div id="js-weather-background" class="widget">
-        <!--<div id="js-cover" class="waiting-screen"><i class="fa fa-refresh"></i> </div>-->
+    <div id="js-cover" class="waiting-screen"><i class="fa fa-refresh"></i></div>
+    <div class="weather-background big-screen"></div>
+    <div class="widget weather-background">
         <div class="local">
             <p class="local--main">
                 <span id="js-local-city" class="local__item"></span>
@@ -29,27 +31,47 @@
             </div>
         </div>
         <div class="weather">
-            <div class="weather--main"><i id="js-weather-icon" class="fi"></i><p id="js-weather-temp"></p></div>
+            <div class="weather--main">
+                <span id="js-weather-temp" class="weather__item"></span>
+                <i id="js-weather-icon" class="fi"></i>
+            </div>
+            <h1 id="js-weather-description"></h1>
             <div class="weather--sec">
-                <p id="js-weather-description"></p>
-                <p><span id="js-label-pressure"></span><span id="js-weather-pressure"></span></p>
-                <p>
-                    <span id="js-label-wind"></span>
-                    <span id="js-weather-wind-speed"></span>
+                <p class="weather__row">
+                    <span id="js-label-pressure" class="weather__item"></span>
+                    <span id="js-weather-pressure"></span></p>
+                <p class="weather__row">
+                    <span id="js-label-wind" class="weather__item"></span>
+                    <span id="js-weather-wind-speed" class="weather__item"></span>
                     <i class="fa fa-long-arrow-up ico" id="js-weather-wind-dir"></i>
                 </p>
-                <p><span id="js-label-humidity"></span><span id="js-weather-humidity"></span></p>
-                <p>
-                    <span id="js-label-rain"></span><span id="js-weather-rain"></span>
+                <p class="weather__row">
+                    <span id="js-label-humidity" class="weather__item">
+                    </span><span id="js-weather-humidity"></span>
+                </p>
+                <p class="weather__row">
+                    <span id="js-label-rain" class="weather__item"></span>
+                    <span id="js-weather-rain" class="weather__item"></span>
                     <span>
                         <i class="fa fa-tint ico" id="js-weather-drop"></i>
                         <i class="fa fa-snowflake-o ico" id="js-weather-snow"></i>
                     </span>
                 </p>
-                <p><span id="js-label-cloudiness"></span><span id="js-weather-cloudiness"></span></p>
+                <p class="weather__row">
+                    <span id="js-label-cloudiness" class="weather__item"></span>
+                    <span id="js-weather-cloudiness"></span></p>
             </div>
         </div>
+        <div class="info">
+            <i id="js-btn-cancel" class="fa fa-times btn"></i>
+            <p>Aplikacja pokazuje obecną pogadę w miejscu określonym dzięki geolokacji, a jeżeli ta nie jest dostępna,
+            używa alternatywnej, mniej precyzyjnej metody określenia położenia. Dane meteorologiczne pobierane są z
+            OpenWeatherMap.com.</p>
+            <p>Grafiki stanów pogodowych stworzył Kirill Kazachek z Flaticon.com</p>
+            <p>Marcin Cekiera © </p>
+        </div>
         <div id="js-btn-lang" class="btn btn--lang">en</div>
+        <div id="js-btn-info" class="btn btn--info"><i class="fa fa-info"></i> </div>
         <div id="js-btn-update" class="btn btn--update"><i class="fa fa-refresh"></i></div>
     </div>
 
